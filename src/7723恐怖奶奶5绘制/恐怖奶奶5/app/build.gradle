@@ -1,0 +1,35 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        applicationId "com.OpenUI.ImGui"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        ndk {
+            abiFilters 'arm64-v8a'
+        }
+        signingConfig signingConfigs.release
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    externalNativeBuild {
+        ndkBuild {
+            path file('src/main/jni/Android.mk')
+        }
+    }
+
+    dependencies {
+        compile fileTree(dir: 'libs', include: ['*.jar'])
+        implementation fileTree(dir: 'libs', include: ['*.jar'])
+        api fileTree(dir: 'libs', include: ['*.jar'])   
+    }
+}
