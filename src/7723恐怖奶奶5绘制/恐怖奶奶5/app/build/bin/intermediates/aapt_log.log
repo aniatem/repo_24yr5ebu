@@ -1,0 +1,5 @@
+全量编译: 903 ms
+aapt2 call link 197ms
+aapt2 call optimize 0ms
+aapt2 生成R耗时: 13ms
+aapt2 总耗时: 1.2s
