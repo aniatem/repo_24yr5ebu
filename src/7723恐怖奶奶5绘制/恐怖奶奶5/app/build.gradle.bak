@@ -1,0 +1,48 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    // 1. 定义签名配置（必须放在 buildTypes 之前）
+    signingConfigs {
+        release {
+            storeFile file("my-release-key.jks")  // 替换为您的密钥库文件
+            storePassword "store_password"        // 替换为实际密码
+            keyAlias "key_alias"                 // 替换为密钥别名
+            keyPassword "key_password"           // 替换为密钥密码
+        }
+    }
+
+    defaultConfig {
+        applicationId "com.OpenUI.ImGui"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        ndk {
+            abiFilters 'arm64-v8a'
+        }
+        // 注意：已移除 signingConfig 引用
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release  // 2. 在这里应用签名
+        }
+    }
+
+    externalNativeBuild {
+        ndkBuild {
+            path file('src/main/jni/Android.mk')
+        }
+    }
+}
+
+// 依赖项需要移到 android 块外部！
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    // 移除重复项，只需保留 implementation
+}
