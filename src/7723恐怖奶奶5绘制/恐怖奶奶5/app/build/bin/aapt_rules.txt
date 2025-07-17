@@ -1,0 +1,6 @@
+# view AndroidManifest.xml #generated:23
+-keep class com.OpenUI.ImGui.MainActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:19
+-keep class com.OpenUI.ImGui.MyService { <init>(...); }
+
