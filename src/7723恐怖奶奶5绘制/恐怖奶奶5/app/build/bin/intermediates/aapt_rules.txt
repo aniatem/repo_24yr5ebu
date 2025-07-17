@@ -1,0 +1,4 @@
+# Referenced at /storage/emulated/0/音乐剪辑/7723恐怖奶奶5绘制/恐怖奶奶5/app/build/bin/injected/AndroidManifest.xml:23
+-keep class com.OpenUI.ImGui.MainActivity { <init>(); }
+# Referenced at /storage/emulated/0/音乐剪辑/7723恐怖奶奶5绘制/恐怖奶奶5/app/build/bin/injected/AndroidManifest.xml:19
+-keep class com.OpenUI.ImGui.MyService { <init>(); }
